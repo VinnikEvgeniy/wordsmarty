@@ -20,7 +20,7 @@ public class FileServiceImpl implements FileService {
 	public String getFile(String path) {
 		try {
 			Optional<String> fileContent = readFileContents(new File(path));
-			return fileContent.orElseGet(() -> "Config file not found!");
+			return fileContent.orElseGet(() -> "{\"message\": \"Config file not found!\"}");
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;

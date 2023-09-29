@@ -5,6 +5,7 @@ import com.wordsmatry.domain.Level;
 import com.wordsmatry.service.LevelService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2023/09/27
  */
 @RestController
-@RequestMapping(ApiEndpoint.LEVEL)
+@RequestMapping(value = ApiEndpoint.LEVEL, produces = {MediaType.APPLICATION_JSON_VALUE})
 public class LevelController {
 	@Autowired
 	LevelService levelService;

@@ -5,6 +5,7 @@ import com.wordsmatry.domain.Attempt;
 import com.wordsmatry.service.AttemptService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2023/09/27
  */
 @RestController
-@RequestMapping(ApiEndpoint.ATTEMPT)
+@RequestMapping(value = ApiEndpoint.ATTEMPT, produces = {MediaType.APPLICATION_JSON_VALUE})
 public class AttemptController {
 	@Autowired
 	AttemptService attemptService;

@@ -6,6 +6,7 @@ import com.wordsmatry.domain.Account;
 import com.wordsmatry.service.AccountService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2023/09/27
  */
 @RestController
-@RequestMapping(ApiEndpoint.ACCOUNT)
+@RequestMapping(value = ApiEndpoint.ACCOUNT, produces = {MediaType.APPLICATION_JSON_VALUE})
 public class AccountController {
 	@Autowired
 	AccountService accountService;
@@ -30,12 +31,12 @@ public class AccountController {
 	}
 
 	@DeleteMapping(ApiEndpoint.DELETE)
-	public void deleteAccount(@PathVariable String userId) {
+	public void deleteAccount(@PathVariable("id") String userId) {
 		accountService.delete(userId);
 	}
 
 	@GetMapping(ApiEndpoint.FIND_BY_ID)
-	public AccountDTO getAccountById(@PathVariable String userId) {
+	public AccountDTO getAccountById(@PathVariable("id") String userId) {
 		return accountService.findByUserId(userId);
 	}
 
