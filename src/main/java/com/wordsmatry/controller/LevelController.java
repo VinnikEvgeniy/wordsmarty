@@ -1,7 +1,9 @@
 package com.wordsmatry.controller;
 
+import com.wordsmatry.api.LevelDTO;
 import com.wordsmatry.core.constant.ApiEndpoint;
 import com.wordsmatry.domain.Level;
+import com.wordsmatry.service.AccountService;
 import com.wordsmatry.service.LevelService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +25,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class LevelController {
 	@Autowired
 	LevelService levelService;
+	@Autowired
+	AccountService accountService;
 
 	@PostMapping(ApiEndpoint.CREATE)
-	public void createLevel(@RequestBody Level level) {
-		levelService.save(level);
+	public void createLevel(@RequestBody LevelDTO levelDTO) {
+		if (levelDTO.getUserId() != null && accountService.findByUserId(levelDTO.getUserId()) != null) {
+			levelService.save(levelDTO);
+		}
 	}
 
 	@DeleteMapping(ApiEndpoint.DELETE)
@@ -35,12 +41,12 @@ public class LevelController {
 	}
 
 	@GetMapping(ApiEndpoint.FIND_BY_ID)
-	public Level getLevelById(@PathVariable Long id) {
+	public LevelDTO getLevelById(@PathVariable Long id) {
 		return levelService.findById(id);
 	}
 
 	@GetMapping(ApiEndpoint.FIND_ALL)
-	public List<Level> getAllLevels() {
+	public List<LevelDTO> getAllLevels() {
 		return levelService.findAll();
 	}
 
