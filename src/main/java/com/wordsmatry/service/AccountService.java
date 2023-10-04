@@ -1,7 +1,6 @@
 package com.wordsmatry.service;
 
 import com.wordsmatry.api.AccountDTO;
-import com.wordsmatry.domain.Account;
 import java.util.List;
 
 /**
@@ -11,7 +10,7 @@ import java.util.List;
 public interface AccountService {
 	String save(AccountDTO accountDTO);
 
-	void modify(AccountDTO accountDTO);
+	AccountDTO modify(AccountDTO accountDTO);
 
 	void delete(String userId);
 

@@ -14,6 +14,7 @@ public final class ApiEndpoint {
 	public static final String LEVEL = "/api/level";
 	public static final String PAYMENT = "/api/payment";
 	public static final String CREATE = "/create";
+	public static final String MODIFY = "/modify";
 	public static final String DELETE = "/delete/{id}";
 	public static final String FIND_BY_ID = "/{id}";
 	public static final String FIND_ALL = "/all";

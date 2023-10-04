@@ -2,7 +2,6 @@ package com.wordsmatry.controller;
 
 import com.wordsmatry.api.AccountDTO;
 import com.wordsmatry.core.constant.ApiEndpoint;
-import com.wordsmatry.domain.Account;
 import com.wordsmatry.service.AccountService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +42,11 @@ public class AccountController {
 	@GetMapping(ApiEndpoint.FIND_ALL)
 	public List<AccountDTO> getAllAccounts() {
 		return accountService.findAll();
+	}
+
+	@PostMapping(ApiEndpoint.MODIFY)
+	public AccountDTO modifyAccount(@RequestBody AccountDTO accountDTO) {
+		return accountService.modify(accountDTO);
 	}
 
 }
