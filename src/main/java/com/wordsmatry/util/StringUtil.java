@@ -1,7 +1,6 @@
-package com.wordsmatry;
+package com.wordsmatry.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.Map;
@@ -39,7 +38,6 @@ public class StringUtil {
 
 	public static <T> T toPojo(String json, Class<T> clazz) {
 		ObjectMapper objectMapper = new ObjectMapper();
-		System.out.println(json);
 		try {
 			return objectMapper.readValue(json, clazz);
 		} catch (IOException e) {
