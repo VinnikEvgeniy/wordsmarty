@@ -12,7 +12,7 @@ ADD src/main/resources/Chapters.json /app/Chapters.json
 COPY . /app/
 
 # Соберите JAR-файл внутри контейнера
-RUN mvn package
+RUN mvn clean package
 
 # Команда для запуска приложения (замените "wordsmarty-api-1.0.jar" на имя вашего JAR-файла)
 CMD ["java", "-jar", "target/wordsmarty-api-1.0.jar"]
