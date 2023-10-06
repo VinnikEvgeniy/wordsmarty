@@ -1,7 +1,6 @@
 package com.wordsmatry.service;
 
 import com.wordsmatry.api.LevelDTO;
-import com.wordsmatry.domain.Level;
 import java.util.List;
 
 /**

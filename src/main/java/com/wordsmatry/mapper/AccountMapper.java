@@ -8,7 +8,6 @@ import com.wordsmatry.domain.record.Balance;
 import com.wordsmatry.domain.record.Setting;
 import com.wordsmatry.util.StringUtil;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
