@@ -1,7 +1,7 @@
 package com.wordsmatry.controller;
 
+import com.wordsmatry.api.InGameResourceSpendingDTO;
 import com.wordsmatry.core.constant.ApiEndpoint;
-import com.wordsmatry.domain.InGameResourceSpending;
 import com.wordsmatry.service.InGameResourceSpendingService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class InGameResourceSpendingController {
 	InGameResourceSpendingService inGameResourceSpendingService;
 
 	@PostMapping(ApiEndpoint.CREATE)
-	public void createInGameResourceSpending(@RequestBody InGameResourceSpending inGameResourceSpending) {
+	public void createInGameResourceSpending(@RequestBody InGameResourceSpendingDTO inGameResourceSpending) {
 		inGameResourceSpendingService.save(inGameResourceSpending);
 	}
 
@@ -35,12 +35,12 @@ public class InGameResourceSpendingController {
 	}
 
 	@GetMapping(ApiEndpoint.FIND_BY_ID)
-	public InGameResourceSpending getInGameResourceSpendingById(@PathVariable Long id) {
+	public InGameResourceSpendingDTO getInGameResourceSpendingById(@PathVariable Long id) {
 		return inGameResourceSpendingService.findById(id);
 	}
 
 	@GetMapping(ApiEndpoint.FIND_ALL)
-	public List<InGameResourceSpending> getAllInGameResourceSpendings() {
+	public List<InGameResourceSpendingDTO> getAllInGameResourceSpendings() {
 		return inGameResourceSpendingService.findAll();
 	}
 

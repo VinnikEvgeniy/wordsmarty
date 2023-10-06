@@ -1,9 +1,7 @@
 package com.wordsmatry.service;
 
-import com.wordsmatry.domain.Account;
-import com.wordsmatry.domain.InGameIncome;
+import com.wordsmatry.api.InGameIncomeDTO;
 import java.util.List;
-import org.springframework.stereotype.Service;
 
 /**
  * @author Yevhenii Vynnyk
@@ -11,11 +9,11 @@ import org.springframework.stereotype.Service;
  */
 
 public interface InGameIncomeService {
-	void save(InGameIncome inGameIncome);
+	void save(InGameIncomeDTO inGameIncomeDTO);
 
 	void delete(Long id);
 
-	InGameIncome findById(Long id);
+	InGameIncomeDTO findById(Long id);
 
-	List<InGameIncome> findAll();
+	List<InGameIncomeDTO> findAll();
 }

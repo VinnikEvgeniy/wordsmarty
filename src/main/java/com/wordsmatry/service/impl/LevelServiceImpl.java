@@ -1,9 +1,9 @@
 package com.wordsmatry.service.impl;
 
 import com.wordsmatry.api.LevelDTO;
-import com.wordsmatry.domain.Level;
 import com.wordsmatry.mapper.LevelMapper;
 import com.wordsmatry.repository.LevelRepository;
+import com.wordsmatry.service.AccountService;
 import com.wordsmatry.service.LevelService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +16,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class LevelServiceImpl implements LevelService {
 	@Autowired
+	private AccountService accountService;
+	@Autowired
 	private LevelRepository levelRepository;
 	@Autowired
 	private LevelMapper levelMapper;
 
 	@Override
 	public void save(LevelDTO levelDTO) {
-		levelRepository.save(levelMapper.toEntity(levelDTO));
+		if (levelDTO.getUserId() != null && accountService.findByUserId(levelDTO.getUserId()) != null) {
+			levelRepository.save(levelMapper.toEntity(levelDTO));
+		}
 	}
 
 	@Override

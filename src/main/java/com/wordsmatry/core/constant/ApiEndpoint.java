@@ -8,6 +8,7 @@ public final class ApiEndpoint {
 	public static final String CONFIG = "/api/config";
 	public static final String ACCOUNT = "/api/account";
 	public static final String ATTEMPT = "/api/attempt";
+	public static final String ATTENDANCE_BOOK = "/api/attendanceBook";
 	public static final String ATTEMPT_DAILY_PUZZLE = "/api/attemptDailyPuzzle";
 	public static final String IN_GAME_INCOME = "/api/inGameIncome";
 	public static final String IN_GAME_RESOURCE_SPENDING = "/api/inGameResourceSpending";

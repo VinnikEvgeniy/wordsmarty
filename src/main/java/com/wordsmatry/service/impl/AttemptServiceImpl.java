@@ -1,6 +1,7 @@
 package com.wordsmatry.service.impl;
 
-import com.wordsmatry.domain.Attempt;
+import com.wordsmatry.api.AttemptDTO;
+import com.wordsmatry.mapper.AttemptMapper;
 import com.wordsmatry.repository.AttemptRepository;
 import com.wordsmatry.service.AttemptService;
 import java.util.List;
@@ -15,10 +16,12 @@ import org.springframework.stereotype.Service;
 public class AttemptServiceImpl implements AttemptService {
 	@Autowired
 	AttemptRepository attemptRepository;
+	@Autowired
+	AttemptMapper attemptMapper;
 
 	@Override
-	public void save(Attempt attempt) {
-		attemptRepository.save(attempt);
+	public void save(AttemptDTO attempt) {
+		attemptRepository.save(attemptMapper.toEntity(attempt));
 	}
 
 	@Override
@@ -27,12 +30,12 @@ public class AttemptServiceImpl implements AttemptService {
 	}
 
 	@Override
-	public Attempt findById(Long id) {
-		return attemptRepository.findById(id).orElseThrow();
+	public AttemptDTO findById(Long id) {
+		return attemptMapper.toApi(attemptRepository.findById(id).orElseThrow());
 	}
 
 	@Override
-	public List<Attempt> findAll() {
-		return attemptRepository.findAll();
+	public List<AttemptDTO> findAll() {
+		return attemptMapper.toApi(attemptRepository.findAll());
 	}
 }

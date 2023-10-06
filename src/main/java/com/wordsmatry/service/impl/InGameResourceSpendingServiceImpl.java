@@ -1,6 +1,7 @@
 package com.wordsmatry.service.impl;
 
-import com.wordsmatry.domain.InGameResourceSpending;
+import com.wordsmatry.api.InGameResourceSpendingDTO;
+import com.wordsmatry.mapper.InGameResourceSpendingMapper;
 import com.wordsmatry.repository.InGameResourceSpendingRepository;
 import com.wordsmatry.service.InGameResourceSpendingService;
 import java.util.List;
@@ -15,10 +16,12 @@ import org.springframework.stereotype.Service;
 public class InGameResourceSpendingServiceImpl implements InGameResourceSpendingService {
 	@Autowired
 	InGameResourceSpendingRepository inGameResourceSpendingRepository;
+	@Autowired
+	InGameResourceSpendingMapper inGameResourceSpendingMapper;
 
 	@Override
-	public void save(InGameResourceSpending inGameResourceSpending) {
-		inGameResourceSpendingRepository.save(inGameResourceSpending);
+	public void save(InGameResourceSpendingDTO inGameResourceSpending) {
+		inGameResourceSpendingRepository.save(inGameResourceSpendingMapper.toEntity(inGameResourceSpending));
 	}
 
 	@Override
@@ -27,12 +30,12 @@ public class InGameResourceSpendingServiceImpl implements InGameResourceSpending
 	}
 
 	@Override
-	public InGameResourceSpending findById(Long id) {
-		return inGameResourceSpendingRepository.findById(id).orElseThrow();
+	public InGameResourceSpendingDTO findById(Long id) {
+		return inGameResourceSpendingMapper.toApi(inGameResourceSpendingRepository.findById(id).orElseThrow());
 	}
 
 	@Override
-	public List<InGameResourceSpending> findAll() {
-		return inGameResourceSpendingRepository.findAll();
+	public List<InGameResourceSpendingDTO> findAll() {
+		return inGameResourceSpendingMapper.toApi(inGameResourceSpendingRepository.findAll());
 	}
 }

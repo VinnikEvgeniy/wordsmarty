@@ -1,8 +1,7 @@
 package com.wordsmatry.service;
 
-import com.wordsmatry.domain.AttemptDailyPuzzle;
+import com.wordsmatry.api.AttemptDailyPuzzleDTO;
 import java.util.List;
-import org.springframework.stereotype.Service;
 
 /**
  * @author Yevhenii Vynnyk
@@ -10,11 +9,11 @@ import org.springframework.stereotype.Service;
  */
 
 public interface AttemptDailyPuzzleService {
-	void save(AttemptDailyPuzzle attemptDailyPuzzle);
+	void save(AttemptDailyPuzzleDTO attemptDailyPuzzleDTO);
 
 	void delete(Long id);
 
-	AttemptDailyPuzzle findById(Long id);
+	AttemptDailyPuzzleDTO findById(Long id);
 
-	List<AttemptDailyPuzzle> findAll();
+	List<AttemptDailyPuzzleDTO> findAll();
 }

@@ -1,6 +1,7 @@
 package com.wordsmatry.service.impl;
 
-import com.wordsmatry.domain.InGameIncome;
+import com.wordsmatry.api.InGameIncomeDTO;
+import com.wordsmatry.mapper.InGameIncomeMapper;
 import com.wordsmatry.repository.InGameIncomeRepository;
 import com.wordsmatry.service.InGameIncomeService;
 import java.util.List;
@@ -15,10 +16,12 @@ import org.springframework.stereotype.Service;
 public class InGameIncomeServiceImpl implements InGameIncomeService {
 	@Autowired
 	InGameIncomeRepository inGameIncomeRepository;
+	@Autowired
+	InGameIncomeMapper inGameIncomeMapper;
 
 	@Override
-	public void save(InGameIncome inGameIncome) {
-		inGameIncomeRepository.save(inGameIncome);
+	public void save(InGameIncomeDTO inGameIncome) {
+		inGameIncomeRepository.save(inGameIncomeMapper.toEntity(inGameIncome));
 	}
 
 	@Override
@@ -27,12 +30,12 @@ public class InGameIncomeServiceImpl implements InGameIncomeService {
 	}
 
 	@Override
-	public InGameIncome findById(Long id) {
-		return inGameIncomeRepository.findById(id).orElseThrow();
+	public InGameIncomeDTO findById(Long id) {
+		return inGameIncomeMapper.toApi(inGameIncomeRepository.findById(id).orElseThrow());
 	}
 
 	@Override
-	public List<InGameIncome> findAll() {
-		return inGameIncomeRepository.findAll();
+	public List<InGameIncomeDTO> findAll() {
+		return inGameIncomeMapper.toApi(inGameIncomeRepository.findAll());
 	}
 }

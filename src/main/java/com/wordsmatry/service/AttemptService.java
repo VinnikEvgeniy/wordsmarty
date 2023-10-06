@@ -1,9 +1,7 @@
 package com.wordsmatry.service;
 
-import com.wordsmatry.domain.Account;
-import com.wordsmatry.domain.Attempt;
+import com.wordsmatry.api.AttemptDTO;
 import java.util.List;
-import org.springframework.stereotype.Service;
 
 /**
  * @author Yevhenii Vynnyk
@@ -11,11 +9,11 @@ import org.springframework.stereotype.Service;
  */
 
 public interface AttemptService {
-	void save(Attempt attempt);
+	void save(AttemptDTO attemptDTO);
 
 	void delete(Long id);
 
-	Attempt findById(Long id);
+	AttemptDTO findById(Long id);
 
-	List<Attempt> findAll();
+	List<AttemptDTO> findAll();
 }

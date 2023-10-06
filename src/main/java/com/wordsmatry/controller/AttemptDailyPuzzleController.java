@@ -1,8 +1,7 @@
 package com.wordsmatry.controller;
 
+import com.wordsmatry.api.AttemptDailyPuzzleDTO;
 import com.wordsmatry.core.constant.ApiEndpoint;
-import com.wordsmatry.domain.Attempt;
-import com.wordsmatry.domain.AttemptDailyPuzzle;
 import com.wordsmatry.service.AttemptDailyPuzzleService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class AttemptDailyPuzzleController {
 	AttemptDailyPuzzleService attemptDailyPuzzleService;
 
 	@PostMapping(ApiEndpoint.CREATE)
-	public void createAttempt(@RequestBody AttemptDailyPuzzle attemptDailyPuzzle) {
+	public void createAttempt(@RequestBody AttemptDailyPuzzleDTO attemptDailyPuzzle) {
 		attemptDailyPuzzleService.save(attemptDailyPuzzle);
 	}
 
@@ -36,12 +35,12 @@ public class AttemptDailyPuzzleController {
 	}
 
 	@GetMapping(ApiEndpoint.FIND_BY_ID)
-	public AttemptDailyPuzzle getAttemptDailyPuzzleById(@PathVariable Long id) {
+	public AttemptDailyPuzzleDTO getAttemptDailyPuzzleById(@PathVariable Long id) {
 		return attemptDailyPuzzleService.findById(id);
 	}
 
 	@GetMapping(ApiEndpoint.FIND_ALL)
-	public List<AttemptDailyPuzzle> getAllAttemptDailyPuzzles() {
+	public List<AttemptDailyPuzzleDTO> getAllAttemptDailyPuzzles() {
 		return attemptDailyPuzzleService.findAll();
 	}
 

@@ -1,7 +1,7 @@
 package com.wordsmatry.controller;
 
+import com.wordsmatry.api.PaymentDTO;
 import com.wordsmatry.core.constant.ApiEndpoint;
-import com.wordsmatry.domain.Payment;
 import com.wordsmatry.service.PaymentService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class PaymentController {
 	PaymentService paymentService;
 
 	@PostMapping(ApiEndpoint.CREATE)
-	public void createPayment(@RequestBody Payment payment) {
+	public void createPayment(@RequestBody PaymentDTO payment) {
 		paymentService.save(payment);
 	}
 
@@ -35,12 +35,12 @@ public class PaymentController {
 	}
 
 	@GetMapping(ApiEndpoint.FIND_BY_ID)
-	public Payment getPaymentById(@PathVariable Long id) {
+	public PaymentDTO getPaymentById(@PathVariable Long id) {
 		return paymentService.findById(id);
 	}
 
 	@GetMapping(ApiEndpoint.FIND_ALL)
-	public List<Payment> getAllPayments() {
+	public List<PaymentDTO> getAllPayments() {
 		return paymentService.findAll();
 	}
 

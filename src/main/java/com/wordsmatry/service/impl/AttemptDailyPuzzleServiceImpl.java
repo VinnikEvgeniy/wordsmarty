@@ -1,6 +1,7 @@
 package com.wordsmatry.service.impl;
 
-import com.wordsmatry.domain.AttemptDailyPuzzle;
+import com.wordsmatry.api.AttemptDailyPuzzleDTO;
+import com.wordsmatry.mapper.AttemptDailyPuzzleMapper;
 import com.wordsmatry.repository.AttemptDailyPuzzleRepository;
 import com.wordsmatry.service.AttemptDailyPuzzleService;
 import java.util.List;
@@ -15,10 +16,12 @@ import org.springframework.stereotype.Service;
 public class AttemptDailyPuzzleServiceImpl implements AttemptDailyPuzzleService {
 	@Autowired
 	AttemptDailyPuzzleRepository attemptDailyPuzzleRepository;
+	@Autowired
+	AttemptDailyPuzzleMapper attemptDailyPuzzleMapper;
 
 	@Override
-	public void save(AttemptDailyPuzzle attemptDailyPuzzle) {
-		attemptDailyPuzzleRepository.save(attemptDailyPuzzle);
+	public void save(AttemptDailyPuzzleDTO attemptDailyPuzzle) {
+		attemptDailyPuzzleRepository.save(attemptDailyPuzzleMapper.toEntity(attemptDailyPuzzle));
 	}
 
 	@Override
@@ -27,12 +30,12 @@ public class AttemptDailyPuzzleServiceImpl implements AttemptDailyPuzzleService 
 	}
 
 	@Override
-	public AttemptDailyPuzzle findById(Long id) {
-		return attemptDailyPuzzleRepository.findById(id).orElseThrow();
+	public AttemptDailyPuzzleDTO findById(Long id) {
+		return attemptDailyPuzzleMapper.toApi(attemptDailyPuzzleRepository.findById(id).orElseThrow());
 	}
 
 	@Override
-	public List<AttemptDailyPuzzle> findAll() {
-		return attemptDailyPuzzleRepository.findAll();
+	public List<AttemptDailyPuzzleDTO> findAll() {
+		return attemptDailyPuzzleMapper.toApi(attemptDailyPuzzleRepository.findAll());
 	}
 }

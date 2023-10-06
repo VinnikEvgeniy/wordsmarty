@@ -1,6 +1,7 @@
 package com.wordsmatry.service.impl;
 
-import com.wordsmatry.domain.Payment;
+import com.wordsmatry.api.PaymentDTO;
+import com.wordsmatry.mapper.PaymentMapper;
 import com.wordsmatry.repository.PaymentRepository;
 import com.wordsmatry.service.PaymentService;
 import java.util.List;
@@ -14,11 +15,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class PaymentServiceImpl implements PaymentService {
 	@Autowired
-	PaymentRepository paymentRepository;
+	private PaymentRepository paymentRepository;
+	@Autowired
+	private PaymentMapper paymentMapper;
 
 	@Override
-	public void save(Payment payment) {
-		paymentRepository.save(payment);
+	public void save(PaymentDTO payment) {
+		paymentRepository.save(paymentMapper.toEntity(payment));
 	}
 
 	@Override
@@ -27,12 +30,12 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 	@Override
-	public Payment findById(Long id) {
-		return paymentRepository.findById(id).orElseThrow();
+	public PaymentDTO findById(Long id) {
+		return paymentMapper.toApi(paymentRepository.findById(id).orElseThrow());
 	}
 
 	@Override
-	public List<Payment> findAll() {
-		return paymentRepository.findAll();
+	public List<PaymentDTO> findAll() {
+		return paymentMapper.toApi(paymentRepository.findAll());
 	}
 }

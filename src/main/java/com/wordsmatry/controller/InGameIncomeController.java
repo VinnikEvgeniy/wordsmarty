@@ -1,7 +1,7 @@
 package com.wordsmatry.controller;
 
+import com.wordsmatry.api.InGameIncomeDTO;
 import com.wordsmatry.core.constant.ApiEndpoint;
-import com.wordsmatry.domain.InGameIncome;
 import com.wordsmatry.service.InGameIncomeService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class InGameIncomeController {
 	InGameIncomeService inGameIncomeService;
 
 	@PostMapping(ApiEndpoint.CREATE)
-	public void createInGameIncome(@RequestBody InGameIncome inGameIncome) {
+	public void createInGameIncome(@RequestBody InGameIncomeDTO inGameIncome) {
 		inGameIncomeService.save(inGameIncome);
 	}
 
@@ -35,12 +35,12 @@ public class InGameIncomeController {
 	}
 
 	@GetMapping(ApiEndpoint.FIND_BY_ID)
-	public InGameIncome getInGameIncomeById(@PathVariable Long id) {
+	public InGameIncomeDTO getInGameIncomeById(@PathVariable Long id) {
 		return inGameIncomeService.findById(id);
 	}
 
 	@GetMapping(ApiEndpoint.FIND_ALL)
-	public List<InGameIncome> getAllInGameIncomes() {
+	public List<InGameIncomeDTO> getAllInGameIncomes() {
 		return inGameIncomeService.findAll();
 	}
 

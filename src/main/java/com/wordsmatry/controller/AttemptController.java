@@ -1,7 +1,7 @@
 package com.wordsmatry.controller;
 
+import com.wordsmatry.api.AttemptDTO;
 import com.wordsmatry.core.constant.ApiEndpoint;
-import com.wordsmatry.domain.Attempt;
 import com.wordsmatry.service.AttemptService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class AttemptController {
 	AttemptService attemptService;
 
 	@PostMapping(ApiEndpoint.CREATE)
-	public void createAttempt(@RequestBody Attempt attempt) {
+	public void createAttempt(@RequestBody AttemptDTO attempt) {
 		attemptService.save(attempt);
 	}
 
@@ -35,12 +35,12 @@ public class AttemptController {
 	}
 
 	@GetMapping(ApiEndpoint.FIND_BY_ID)
-	public Attempt getAttemptById(@PathVariable Long id) {
+	public AttemptDTO getAttemptById(@PathVariable Long id) {
 		return attemptService.findById(id);
 	}
 
 	@GetMapping(ApiEndpoint.FIND_ALL)
-	public List<Attempt> getAllAttempts() {
+	public List<AttemptDTO> getAllAttempts() {
 		return attemptService.findAll();
 	}
 
